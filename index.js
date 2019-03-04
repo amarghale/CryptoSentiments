@@ -15,6 +15,13 @@ var languageClient = new language.LanguageServiceClient({
     projectId: config.project_id
   });
 
+
+  const bitcoinsSearch = 'bitcoin, BTC, XBT, satoshi, bitcoin price, bitcoin trend';
+  const ethriumSearch = 'Ethrium, ETH';
+  const litecoinSearch = 'litecoin';
+  const zcash = 'zcash';
+  const ripple = 'ripple';
+  
   const seacrhTerms = 'bitcoin, BTC, XBT, satoshi, bitcoin price, bitcoin trend';
   const popularUsers = '58487473, 3367334171,  928759224599040001, 3022775424, 2207129125, 1007975429091807232, 216304017, 1971497084';
   
@@ -30,13 +37,6 @@ var languageClient = new language.LanguageServiceClient({
               {
                   filterTweets(event.text, event);
                }
-  
-              //callNaturalLanguageApi(event);
-              // event.text.replace(/(@[^ ]+)/g, '').
-              // replace(/(#[^ ]+)/g, '').
-              // replace(/(https?:\/\/[^ ]+)/g, '');
-      //         console.log("**************Tweets**************")
-      //    console.log(event.text);
           }
       });
       stream.on('error', function(error){
@@ -45,7 +45,6 @@ var languageClient = new language.LanguageServiceClient({
   });
 
   function filterTweets(tweets, event){
-    var s = "@amar #Ghale #is @asd.";
     var regexp = /\s([@#][\w_-]+)/g;
     var refinedTweets = tweets.replace(regexp, '')
     var linkRegexp = /^(http:\/\/t\.|https:\/\/t\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/g;
@@ -87,23 +86,4 @@ function callNaturalLanguageApi(tweet, event){
 
 
 
-    //    var tweet = "I am very sad.";
-    //     const document = {
-    //         content: tweet,
-    //         type: "PLAIN_TEXT"
-    //     };
-    //     languageClient.analyzeSentiment({document: document}).then
-    //     (results => {
-    //         const sentiment = results[0].documentSentiment;
-    //         // let tweetForDb = {
-    //         //     coin: 'Bitcoin',
-    //         //     tweet: tweet,
-    //         //     created_at: event.created_at,
-    //         //     score: sentiment.score,
-    //         //   };
-    //           console.log(sentiment.score);
-    //           //coinRef.push(tweetForDb);
-    //     })
-    //     .catch(err => {
-    //         console.error('Error:', err);
-    //     });
+    
